@@ -1,0 +1,11 @@
+{
+    "name": "meu-projeto",
+    "scripts": {
+        "start:frontend": "cd frontend && npm run dev",
+        "start:backend": "cd backend && npm run start:dev",
+        "start:all": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}

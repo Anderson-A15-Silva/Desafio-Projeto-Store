@@ -1,0 +1,76 @@
+:root {
+    --primary: #FCEED5;
+    --secundary: #002A48;
+    --terciary: #003459;
+    --quaternary: #F7DBA7;
+    --neutral: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    height: 70px;
+    color: var(--secundary);
+    display: flex;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li {
+    list-style: none;
+    margin: 15px;
+}
+
+nav li:hover {
+    font-size: 1.01em;
+    font-weight: bold;
+}
+
+header div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 40px 0px 100px;
+    align-items: center;
+}
+
+header div p:first-child {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+header div p:last-child {
+    font-size: 0.6em;
+}
+
+header input {
+    border-radius: 20px;
+    height: 20px;
+    padding: 8px;
+    border: none;
+    margin: 0px 20px 0px 40px;
+}
+
+header button {
+    background-color: var(--secundary);
+    color: var(--neutral);
+    padding: 5px;
+    border-radius: 20px;
+    width: 240px;
+    border: none;
+}
