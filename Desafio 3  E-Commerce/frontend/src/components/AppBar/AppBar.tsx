@@ -17,6 +17,7 @@ const AppBar = () => {
             </nav>
             <input type="text" placeholder="Search something here!"/>
             <button>Join the community</button>
+            <div id="square-3"></div>
         </header>
     )
 }

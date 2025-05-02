@@ -83,10 +83,6 @@
     transform: rotate(30deg);
 }
 
-#welcome-area #square-3 {
-    position: absolute;
-}
-
 .cards-section {
     display: flex;
     justify-content: center;
@@ -105,17 +101,17 @@
     display: flex;
     width: 800px;
     flex-wrap: wrap;
-    margin: 50px;
+    margin: 50px 120px;
     gap: 15px;
 }
 
-.cards-section #cards-header p {
+.cards-section .cards-header p {
     color: var(--secundary);
-    margin-left: 40px;
+    margin-left: 100px;
     font-size: 0.8em;
 }
 
-.cards-section #cards-header p:last-child {
+.cards-section .cards-header p:last-child {
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -131,4 +127,166 @@
     border: 1px solid var(--terciary);
     color: var(--terciary);
     background-color: var(--neutral);
+    margin-right: 200px;
 }
+
+.cards-section #first-banner {
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+    background-color: var(--terciary);
+    width: 100%;
+    height: 350px;
+    border-radius: 20px;
+    margin: 100px 0px;
+    overflow: hidden;
+    color: var(--secundary)
+}
+
+.cards-section #img-background-2 {
+    position: absolute;
+    left: 60px;
+    height: 300px;
+    bottom: 0;
+    z-index: 4;
+}
+
+#first-banner > div:nth-of-type(1) {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 70px;
+    z-index: 4;
+}
+
+#first-banner div h2 {
+    margin-left: 100px;
+    font-size: 2em;
+}
+
+#first-banner div p:nth-of-type(1) {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.cards-section button {
+    margin: 20px 10px;
+    padding: 15px;
+    border: 2px solid var(--terciary);
+    border-radius: 30px;
+    background-color: var(--neutral);
+}
+
+* .blue-button {
+    background-color: var(--secundary);
+}
+
+#information-section > div > div:nth-of-type(1) > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px;
+}
+
+#information-section > div > div:nth-of-type(1) > div:first-child button {
+    padding: 10px;
+    color: var(--secundary);
+    background-color: var(--neutral);
+    border-radius: 20px;
+    border: 1px solid var(--secundary)
+}
+
+#information-section > div > div:nth-of-type(1) > div:last-child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#information-section > div > div:nth-of-type(1) > div img {
+    width: 100px;
+}
+
+#second-banner {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    height: 320px;
+    border-radius: 20px;
+    margin: 100px 100px;
+    background-color: #FFB775;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--quaternary);
+    color: var(--secundary);
+}
+
+#second-banner > div:first-child {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 70px;
+    z-index: 4;
+}
+
+#second-banner img {
+    transform: scaleX(-1) rotate(-60deg);
+    height: 280px;
+    z-index: 4;
+}
+
+#square-4 {
+    background-color: var(--secundary);
+    position: absolute;
+    height: 750px;
+    width: 750px;
+    left: -180px;
+    transform: rotate(30deg);
+    border-radius: 120px;
+    bottom: -550px;
+}
+
+#square-5 {
+    position: absolute;
+    background-color: var(--primary);
+    height: 550px;
+    width: 550px;
+    right: -100px;
+    transform: rotate(30deg);
+    border-radius: 80px;
+    top: -180px;
+}
+
+#square-6 {
+    background-color: var(--primary);
+    position: absolute;
+    height: 650px;
+    width: 650px;
+    left: -100px;
+    transform: rotate(50deg);
+    border-radius: 80px;
+    top: -200px;
+}
+
+#square-7 {
+    background-color: var(--quaternary);
+    position: absolute;
+    height: 650px;
+    width: 650px;
+    right: -140px;
+    border-radius: 80px;
+    transform: rotate(60deg);
+    bottom: -450px;
+}
+
+#second-banner h2 {
+    font-size: 2.5em;
+}
+
+#second-banner p:nth-of-type(1) {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+

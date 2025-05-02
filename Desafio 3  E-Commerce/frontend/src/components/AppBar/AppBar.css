@@ -19,6 +19,8 @@ header {
     color: var(--secundary);
     display: flex;
     align-items: center;
+    z-index: 3;
+    width: 100%;
 }
 
 header nav {
@@ -49,6 +51,10 @@ header div {
     align-items: center;
 }
 
+header p, nav li {
+    z-index: 5;
+}
+
 header div p:first-child {
     font-size: 1.4em;
     font-weight: bold;
@@ -73,4 +79,16 @@ header button {
     border-radius: 20px;
     width: 240px;
     border: none;
+}
+
+header #square-3 {
+    position: absolute;
+    width: 360px;
+    z-index: 1;
+    background-color: var(--quaternary);
+    height: 380px;
+    border-radius: 80px;
+    top: -320px;
+    transform: rotate(120deg);
+    left: -150px;
 }
