@@ -12,7 +12,34 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#welcome-area {
+body {
+    position: relative;
+}
+
+
+#homePage header {
+    background-color: var(--primary);
+    height: 70px;
+    color: var(--secundary);
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    width: 100%;
+}
+
+#homePage header #square-3 {
+    position: absolute;
+    width: 360px;
+    z-index: 1;
+    background-color: var(--quaternary);
+    height: 380px;
+    border-radius: 80px;
+    top: -320px;
+    transform: rotate(120deg);
+    left: -150px;
+}
+
+#homePage #welcome-area {
     background-color: var(--primary);
     width: 100%;
     height: 565px;
@@ -24,28 +51,28 @@
     overflow: hidden;
 }
 
-#welcome-area > div {
+#homePage #welcome-area > div {
     display: flex;
     flex-direction: column;
     width: 520px;
     margin: 100px;
 } 
 
-#welcome-area > div > p:nth-of-type(1) {
+#homePage #welcome-area > div > p:nth-of-type(1) {
     font-weight: bold;
     font-size: 3.2em;
 }
 
-#welcome-area h1 {
+#homePage #welcome-area h1 {
     font-size: 4em;
 }
 
-#welcome-area div > div {
+#homePage #welcome-area div > div {
     display: flex;
     justify-content: flex-start;
 }
 
-#welcome-area button {
+#homePage #welcome-area button {
     margin: 20px 10px;
     padding: 15px;
     border: 2px solid var(--terciary);
@@ -53,7 +80,7 @@
     background-color: var(--neutral);
 }
 
-#welcome-area #img-background-1 {
+#homePage #welcome-area #img-background-1 {
     position: absolute;
     right: 140px;
     height: 450px;
@@ -61,7 +88,7 @@
     z-index: 1;
 }
 
-#welcome-area #square-1 {
+#homePage #welcome-area #square-1 {
     position: absolute;
     right: 240px;
     width: 380px;
@@ -72,7 +99,7 @@
     transform: rotate(12deg);
 }
 
-#welcome-area #square-2 {
+#homePage #welcome-area #square-2 {
     position: absolute;
     right: 140px;
     width: 440px;
@@ -83,21 +110,21 @@
     transform: rotate(30deg);
 }
 
-.cards-section {
+#homePage .cards-section {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     margin: 50px 0px;
+    justify-content: space-around;
 }
 
-.cards-section > div {
+#homePage .cards-section > div {
     display: flex;
     flex-direction: column;
 }
 
-.cards-section .cards-area {
+#homePage .cards-section .cards-area {
     display: flex;
     width: 800px;
     flex-wrap: wrap;
@@ -105,32 +132,32 @@
     gap: 15px;
 }
 
-.cards-section .cards-header p {
+#homePage .cards-header p {
     color: var(--secundary);
     margin-left: 100px;
     font-size: 0.8em;
 }
 
-.cards-section .cards-header p:last-child {
+#homePage .cards-header p:last-child {
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.cards-section > div > div {
+#homePage .cards-section > div > div {
     display: flex;
     justify-content: space-between;
 }
 
-.cards-section > div > div > button {
+#homePage .cards-section button {
     padding: 10px;
     border-radius: 20px;
     border: 1px solid var(--terciary);
     color: var(--terciary);
     background-color: var(--neutral);
-    margin-right: 200px;
+    margin-right: 100px;
 }
 
-.cards-section #first-banner {
+#homePage .cards-section #first-banner {
     display: flex;
     position: relative;
     flex-direction: row-reverse;
@@ -143,7 +170,7 @@
     color: var(--secundary)
 }
 
-.cards-section #img-background-2 {
+#homePage .cards-section #img-background-2 {
     position: absolute;
     left: 60px;
     height: 300px;
@@ -151,7 +178,7 @@
     z-index: 4;
 }
 
-#first-banner > div:nth-of-type(1) {
+#homePage #first-banner > div:nth-of-type(1) {
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -161,17 +188,17 @@
     z-index: 4;
 }
 
-#first-banner div h2 {
+#homePage #first-banner div h2 {
     margin-left: 100px;
     font-size: 2em;
 }
 
-#first-banner div p:nth-of-type(1) {
+#homePage #first-banner div p:nth-of-type(1) {
     font-size: 1.4em;
     font-weight: bold;
 }
 
-.cards-section button {
+#homePage .cards-section button {
     margin: 20px 10px;
     padding: 15px;
     border: 2px solid var(--terciary);
@@ -179,35 +206,35 @@
     background-color: var(--neutral);
 }
 
-* .blue-button {
+#homePage * .blue-button {
     background-color: var(--secundary);
 }
 
-#information-section > div > div:nth-of-type(1) > div:first-child {
+#homePage #information-section > div > div:nth-of-type(1) > div:first-child {
     display: flex;
     justify-content: space-between;
     margin: 20px 50px;
 }
 
-#information-section > div > div:nth-of-type(1) > div:first-child button {
+#homePage #information-section > div > div:nth-of-type(1) > div:first-child button {
     padding: 10px;
     color: var(--secundary);
     background-color: var(--neutral);
     border-radius: 20px;
-    border: 1px solid var(--secundary)
+    border: 1px solid var(--secundary);
 }
 
-#information-section > div > div:nth-of-type(1) > div:last-child {
+#homePage #information-section > div > div:nth-of-type(1) > div:last-child {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-#information-section > div > div:nth-of-type(1) > div img {
+#homePage #information-section > div > div:nth-of-type(1) > div img {
     width: 100px;
 }
 
-#second-banner {
+#homePage #second-banner {
     overflow: hidden;
     display: flex;
     position: relative;
@@ -222,7 +249,7 @@
     color: var(--secundary);
 }
 
-#second-banner > div:first-child {
+#homePage #second-banner > div:first-child {
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -231,13 +258,13 @@
     z-index: 4;
 }
 
-#second-banner img {
+#homePage #second-banner img {
     transform: scaleX(-1) rotate(-60deg);
     height: 280px;
     z-index: 4;
 }
 
-#square-4 {
+#homePage #square-4 {
     background-color: var(--secundary);
     position: absolute;
     height: 750px;
@@ -248,7 +275,7 @@
     bottom: -550px;
 }
 
-#square-5 {
+#homePage #square-5 {
     position: absolute;
     background-color: var(--primary);
     height: 550px;
@@ -259,7 +286,7 @@
     top: -180px;
 }
 
-#square-6 {
+#homePage #square-6 {
     background-color: var(--primary);
     position: absolute;
     height: 650px;
@@ -270,7 +297,7 @@
     top: -200px;
 }
 
-#square-7 {
+#homePage #square-7 {
     background-color: var(--quaternary);
     position: absolute;
     height: 650px;
@@ -281,12 +308,43 @@
     bottom: -450px;
 }
 
-#second-banner h2 {
+#homePage #second-banner h2 {
     font-size: 2.5em;
 }
 
-#second-banner p:nth-of-type(1) {
+#homePage #second-banner p:nth-of-type(1) {
     font-size: 1.8em;
     font-weight: bold;
 }
 
+#homePage .blue-word {
+    color: var(--secundary);
+    font-weight: bold;
+}
+
+#homePage #information-section #informative-cards-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 140px;
+}
+
+#homePage #information-section #informative-cards-section div {
+    width: 320px;
+    height: 360px;
+    margin-bottom: 400px;
+}
+
+#homePage #information-section #informative-cards-section img {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+}
+
+#homePage #information-section #informative-cards-section p {
+    font-size: 0.7em;
+}
+
+#homePage a {
+    text-decoration: none;
+}

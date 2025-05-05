@@ -13,8 +13,7 @@
 }
 
 header {
-    background-color: var(--primary);
-    color: white;
+    background-color: var(--neutral);
     height: 70px;
     color: var(--secundary);
     display: flex;
@@ -91,4 +90,10 @@ header #square-3 {
     top: -320px;
     transform: rotate(120deg);
     left: -150px;
+}
+
+a {
+    z-index: 6;
+    text-decoration: none;
+    color: var(--secundary);
 }

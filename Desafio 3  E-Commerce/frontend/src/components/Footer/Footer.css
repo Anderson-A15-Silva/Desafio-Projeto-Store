@@ -1,0 +1,118 @@
+:root {
+    --primary: #FCEED5;
+    --secundary: #002A48;
+    --terciary: #003459;
+    --quaternary: #F7DBA7;
+    --neutral: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+footer {
+    position: absolute;
+    background-color: var(--quaternary);
+    border-radius: 40px 40px 0px 0px;
+    width: 100%;
+    bottom: 0px;
+}
+
+footer > div {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 120px;
+    flex-direction: column;
+}
+
+#footer-form, #footer-list, #footer-end {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+#footer-form {
+    align-items: center;
+    height: 100px;
+    background-color: var(--terciary);
+    color: var(--neutral);
+}
+
+#footer-form > * {
+    margin: 10px 30px;
+}
+
+#footer-form > div:first-child p {
+    font-size: 1.2em;
+}
+
+
+#footer-form > div:last-child {
+    background-color: var(--neutral);
+    width: 60%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 15px;
+}
+
+#footer-form > div:last-child input {
+    width: 75%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 0.5px solid gray;
+    padding: 5px;
+}
+
+#footer-form > div:last-child button {
+    background-color: var(--secundary);
+    color: var(--neutral);
+    padding: 5px 10px;
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+}
+
+#footer-list div {
+    display: flex;
+}
+
+#footer-list > div:first-child {
+    width: 30%;
+    justify-content: space-between;
+}
+
+#footer-end > div:first-child {
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    color: var(--terciary);
+}
+
+#footer-end > div:last-child {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: var(--terciary);
+}
+
+#footer-end > div > div p:first-child {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#footer-end > div > div p:last-child {
+    font-size: 0.6em;
+}
+
+#footer-end > div:first-child div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

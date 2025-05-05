@@ -1,0 +1,19 @@
+:root {
+    --primary: #FCEED5;
+    --secundary: #002A48;
+    --terciary: #003459;
+    --quaternary: #F7DBA7;
+    --neutral: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+aside {
+    float: left;
+    width: 20%;
+    font-size: 0.8em;
+}
