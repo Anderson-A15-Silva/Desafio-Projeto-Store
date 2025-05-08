@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Products {
+  id    Int    @id @default(autoincrement())
+  image String
+  name  String
+  type  String
+  price Float
+  size  String
+}
+
+model Pets {
+  id                    Int      @id @default(autoincrement())
+  image                 String
+  name                  String
+  sku                   String
+  gender                String
+  age                   Float
+  size                  String
+  color                 String
+  vaccinated            Boolean
+  dewormed              Boolean
+  cert                  Boolean
+  microchip             Boolean
+  location              String
+  publishedDate         DateTime @default(now())
+  additionalInformation String?
+}
