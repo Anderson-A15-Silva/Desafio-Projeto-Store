@@ -8,7 +8,7 @@ const Category = () => {
     return (
         <div id="categoryPage">
             <AppBar/>
-            <div>
+            <div id="third-banner">
 
             </div>
             <FilterMenu/>
