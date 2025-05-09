@@ -1,10 +1,25 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { PrismaService } from './database/prisma.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Product } from './entities/product.entity';
+import { ProductsModule } from './products/products.module';
+import { Pet } from './entities/pet.entity';
+import { PetsModule } from './pets/pets.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [PrismaService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [Product, Pet],
+      synchronize: true,
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),    
+    ProductsModule,
+    PetsModule,
+    ConfigModule
+  ],
 })
 export class AppModule {}

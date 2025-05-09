@@ -13,4 +13,8 @@ export class AppController {
   getHealthCheck() {
     return { status: 'OK' };
   }
+
+  getHello(){
+    return "Hello World";
+  }
 }

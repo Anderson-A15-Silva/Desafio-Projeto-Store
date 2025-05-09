@@ -1,25 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../database/prisma.service';
-import { CreatePetDto } from './dto/create-pet.dto';
-import { Pet } from '../entities/pet.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Pet } from 'src/entities/pet.entity';
 
 @Injectable()
 export class PetsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    @InjectRepository(Pet)
+    private repo: Repository<Pet>,
+  ) {}
 
-  async create(createPetDto: CreatePetDto): Promise<Pet> {
-    return this.prisma.pets.create({
-      data: createPetDto,
-    });
+  createNewPet(pet: Partial<Pet>) {
+    try {
+      const newPet = this.repo.create(pet);
+      return this.repo.save(newPet);
+    } catch (error) {
+      console.error('Erro ao criar pet:', error);
+      throw new Error('Erro ao criar pet');
+    }
   }
 
-  async findAll(): Promise<Pet[]> {
-    return this.prisma.pets.findMany();
-  }
-
-  async findOne(id: number): Promise<Pet> {
-    return this.prisma.pets.findUnique({
-      where: { id },
-    });
+  findAllPets() {
+    try {
+      return this.repo.find();
+    } catch (error) {
+      console.error('Erro ao procurar pets:', error);
+      throw new Error('Erro ao procurar pet');
+    }
   }
 }

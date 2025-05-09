@@ -1,24 +1,23 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, BadRequestException } from '@nestjs/common';
+import { Pet } from 'src/entities/pet.entity';
 import { PetsService } from './pets.service';
-import { Pet } from '../entities/pet.entity';
 import { CreatePetDto } from './dto/create-pet.dto';
 
 @Controller('pets')
 export class PetsController {
-  constructor(private readonly petsService: PetsService) {}
+  constructor(private service: PetsService) {}
 
   @Get()
-  async findAllPets(): Promise<Pet[]> {
-    return await this.petsService.findAll();
+  getAll(): Promise<Pet[]> {
+    return this.service.findAllPets();
   }
 
   @Post()
-  async createNewPet(@Body() createPetDto: CreatePetDto): Promise<Pet> {
-    return await this.petsService.create(createPetDto);
-  }
+  create(@Body() createPetDto: CreatePetDto): Promise<Pet> {
+    if (!createPetDto.image || !createPetDto.name || !createPetDto.sku || !createPetDto.gender || !createPetDto.age || !createPetDto.size || !createPetDto.color || !createPetDto.vaccinated || !createPetDto.dewormed || !createPetDto.cert || !createPetDto.microchip || !createPetDto.location || !createPetDto.publishedDate) {
+      throw new BadRequestException('Todos os campos são obrigatórios');
+    }
 
-  @Get(':id')
-  async findOnePet(@Param('id') id: number): Promise<Pet> {
-    return this.petsService.findOne(id);
+    return this.service.createNewPet(createPetDto);
   }
 }

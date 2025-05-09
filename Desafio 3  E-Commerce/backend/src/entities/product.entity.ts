@@ -1,3 +1,4 @@
+import { IsPositive } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -14,7 +15,8 @@ export class Product {
   @Column()
   type: string;
 
-  @Column()
+  @IsPositive()
+  @Column('decimal')
   price: number;
 
   @Column()

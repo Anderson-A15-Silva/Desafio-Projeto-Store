@@ -1,25 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../database/prisma.service';
-import { CreateProductDto } from './dto/create-product.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { Product } from '../entities/product.entity';
 
 @Injectable()
 export class ProductsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    @InjectRepository(Product)
+    private repo: Repository<Product>,
+  ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
-    return this.prisma.products.create({
-      data: createProductDto,
-    });
+  createNewProduct(product: Partial<Product>) {
+    try {
+      const newProduct = this.repo.create(product);
+      return this.repo.save(newProduct);
+    } catch (error) {
+      console.error('Erro ao criar produto:', error);
+      throw new Error('Erro ao criar produto');
+    }
+    
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.prisma.products.findMany();
-  }
-
-  async findOne(id: number): Promise<Product> {
-    return this.prisma.products.findUnique({
-      where: { id },
-    });
+  findAllProducts() {
+    try {
+      return this.repo.find();
+    } catch (error) {
+      console.error('Erro ao procurar produtos:', error);
+      throw new Error('Erro ao procurar produto');
+    }
   }
 }

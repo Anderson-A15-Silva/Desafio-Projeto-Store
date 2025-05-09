@@ -44,6 +44,6 @@ export class Pet {
   @Column()
   publishedDate: Date;
 
-  @Column()
-  additionalInformation: string | null;
+  @Column({ type: 'text', nullable: true })
+  additionalInformation: string | null;  
 }
