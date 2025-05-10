@@ -1,4 +1,4 @@
-import { IsString, IsBoolean, IsNumber, IsOptional, IsDateString, IsNotEmpty } from 'class-validator';
+import { IsString, IsBoolean, IsNumber, IsOptional, IsDateString, IsNotEmpty, IsDefined } from 'class-validator';
 
 export class CreatePetDto {
   @IsString()
@@ -30,19 +30,19 @@ export class CreatePetDto {
   color: string;
 
   @IsBoolean()
-  @IsNotEmpty()
+  @IsDefined()
   vaccinated: boolean;
 
   @IsBoolean()
-  @IsNotEmpty()
+  @IsDefined()
   dewormed: boolean;
 
+  @IsDefined()
   @IsBoolean()
-  @IsNotEmpty()
   cert: boolean;
 
   @IsBoolean()
-  @IsNotEmpty()
+  @IsDefined()
   microchip: boolean;
 
   @IsString()

@@ -5,7 +5,7 @@ import { CreatePetDto } from './dto/create-pet.dto';
 
 @Controller('pets')
 export class PetsController {
-  constructor(private service: PetsService) {}
+  constructor(private service: PetsService) { }
 
   @Get()
   getAll(): Promise<Pet[]> {
@@ -14,9 +14,7 @@ export class PetsController {
 
   @Post()
   create(@Body() createPetDto: CreatePetDto): Promise<Pet> {
-    if (!createPetDto.image || !createPetDto.name || !createPetDto.sku || !createPetDto.gender || !createPetDto.age || !createPetDto.size || !createPetDto.color || !createPetDto.vaccinated || !createPetDto.dewormed || !createPetDto.cert || !createPetDto.microchip || !createPetDto.location || !createPetDto.publishedDate) {
-      throw new BadRequestException('Todos os campos são obrigatórios');
-    }
+    console.log(createPetDto);
 
     return this.service.createNewPet(createPetDto);
   }
