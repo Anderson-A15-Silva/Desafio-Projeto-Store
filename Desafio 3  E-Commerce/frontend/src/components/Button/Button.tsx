@@ -12,7 +12,7 @@ interface ButtonProps {
 
 const Button = ({ text, backgroundColor, color, border, haveLink, nextPage }: ButtonProps) => {
     return (
-        <button style={{ backgroundColor: backgroundColor, color: color, border: border || "none" }}>
+        <button id='button' style={{ backgroundColor: backgroundColor, color: color, border: border || "none" }}>
             {haveLink && nextPage ? <Link to={nextPage}><p style={{color: color}}>{text}</p></Link> : text}
         </button>
     );

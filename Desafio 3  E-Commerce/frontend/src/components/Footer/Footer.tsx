@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import Button from '../Button/Button';
 
 const Footer = () => {
     return (
-        <footer>
+        <footer id='footer'>
             <div>
                 <div id='footer-form'>
                     <div>
@@ -11,13 +12,13 @@ const Footer = () => {
                     </div>
                     <div>
                         <input type="email" placeholder='Enter your email'/>
-                        <button>Subscribe Now</button>
+                        <Button text='Subscribe Now' haveLink={false} backgroundColor='var(--terciary)' color='var(--neutral)' border='none'/>
                     </div>
                 </div>
                 <div id='footer-list'>
                     <div>
                         <p><Link to="/">Home</Link></p>
-                        <p><Link to="/category">Category</Link></p>
+                        <p><Link to="/category/pets">Category</Link></p>
                         <p>About</p>
                         <p>Contact</p>
                     </div>
@@ -28,6 +29,7 @@ const Footer = () => {
                         <img src="#" alt="youtube logo icon" />
                     </div>
                 </div>
+                <hr />
                 <div id='footer-end'>
                     <div>
                         <p>© 2022 Monito. All rights reserved.</p>

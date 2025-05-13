@@ -13,12 +13,13 @@ export class Product {
   name: string;
 
   @Column()
-  type: string;
+  prType: string;
 
   @IsPositive()
   @Column('decimal')
   price: number;
 
-  @Column()
-  size: string;
+  @IsPositive()
+  @Column('decimal')
+  size: number;
 }

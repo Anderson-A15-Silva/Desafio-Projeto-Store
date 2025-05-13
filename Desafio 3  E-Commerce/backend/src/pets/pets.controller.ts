@@ -1,21 +1,43 @@
-import { Controller, Get, Post, Body, BadRequestException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Query,
+  BadRequestException,
+} from '@nestjs/common';
 import { Pet } from 'src/entities/pet.entity';
 import { PetsService } from './pets.service';
 import { CreatePetDto } from './dto/create-pet.dto';
+import { FilterPetDto } from './dto/filter-pet.dto';
 
 @Controller('pets')
 export class PetsController {
-  constructor(private service: PetsService) { }
+  constructor(private service: PetsService) {}
 
   @Get()
-  getAll(): Promise<Pet[]> {
-    return this.service.findAllPets();
+  getAll(@Query() filter: FilterPetDto): Promise<Pet[]> {
+    return this.service.findAllPets(filter);
   }
 
   @Post()
-  create(@Body() createPetDto: CreatePetDto): Promise<Pet> {
-    console.log(createPetDto);
+  async createPet(
+    @Body() createPetDto: CreatePetDto,
+  ): Promise<Pet> {
+    if (!createPetDto.image) {
+      throw new BadRequestException('The pet image is necessary.');
+    }
 
-    return this.service.createNewPet(createPetDto);
+    const petData = {
+      ...createPetDto,
+      image: createPetDto.image,
+    };
+
+    const createdPet = await this.service.createNewPet(petData);
+
+    return {
+      ...createdPet,
+      image: `${process.env.API_URL || 'http://localhost:3025'}/uploads/${createdPet.image}`,
+    };
   }
 }

@@ -16,14 +16,14 @@ const AppBar: React.FC<AppBarProps> = ({ backgroundColor, squareDisplay }) => {
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/category">Category</Link></li>
+                    <li><Link to="/category/pets">Category</Link></li>
                     <li>About</li>
                     <li>Contact</li>
                 </ul>
             </nav>
             <input type="text" placeholder="Search something here!" />
             <button>Join the community</button>
-            <button> <img src="" alt=""/> VND</button>
+            <button> <img src="#" alt=""/> VND</button>
             <div id="square-3"></div>
         </header>
     );

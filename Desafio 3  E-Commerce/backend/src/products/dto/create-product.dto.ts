@@ -1,4 +1,5 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsEnum } from 'class-validator';
+import { ProductType } from '../../common/enums/product-type.enum';
 
 export class CreateProductDto {
   @IsString()
@@ -9,14 +10,15 @@ export class CreateProductDto {
   @IsNotEmpty()
   name: string;
 
-  @IsString()
+  @IsEnum(ProductType)
   @IsNotEmpty()
-  type: string;
+  prType: ProductType;
 
   @IsNumber()
+  @IsNotEmpty()
   price: number;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  size: string;
+  size: number;
 }

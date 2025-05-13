@@ -33,7 +33,11 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    width: 80%;
+    width: 100%;
+}
+
+#pet-card div p, #product-card div p {
+    font-size: 0.8em
 }
 
 #informative-card {
@@ -49,3 +53,4 @@
     padding: 10px 10px 60px 10px;
     font-size: 0.6em;
 }
+

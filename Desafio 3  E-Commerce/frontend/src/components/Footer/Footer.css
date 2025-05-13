@@ -18,7 +18,7 @@ footer {
     border-radius: 40px 40px 0px 0px;
     width: 100%;
     bottom: 0px;
-    margin-top: 1000px;
+    margin-top: 100px;
 }
 
 footer > div {
@@ -32,6 +32,7 @@ footer > div {
     display: flex;
     justify-content: space-between;
     margin: 10px 0px;
+    align-items: center;
 }
 
 #footer-form {
@@ -58,6 +59,7 @@ footer > div {
     justify-content: space-between;
     padding: 8px;
     border-radius: 15px;
+    align-items: center;
 }
 
 #footer-form > div:last-child input {
@@ -66,6 +68,7 @@ footer > div {
     overflow: hidden;
     border: 0.5px solid gray;
     padding: 5px;
+    height: 30px;
 }
 
 #footer-form > div:last-child button {
@@ -75,6 +78,7 @@ footer > div {
     overflow: hidden;
     border: none;
     border-radius: 10px;
+    width: 200px;
 }
 
 #footer-list div {
@@ -83,7 +87,12 @@ footer > div {
 
 #footer-list > div:first-child {
     width: 30%;
-    justify-content: space-between;
+    justify-content: space-around;
+    color: black;
+}
+
+footer a {
+    color: black !important;
 }
 
 #footer-end > div:first-child {
@@ -115,4 +124,8 @@ footer > div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#footer-list > div:first-child > p:nth-of-type(2) {
+    margin-right: 20px;
 }

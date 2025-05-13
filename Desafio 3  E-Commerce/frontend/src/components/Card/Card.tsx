@@ -8,7 +8,7 @@ type CardProps = {
     product?: string;
     genre?: string;
     age?: number;
-    size?: string;
+    size?: string | number;
     price?: number;
     description?: string;
     text?: string;

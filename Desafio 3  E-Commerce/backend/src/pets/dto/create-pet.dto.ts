@@ -1,9 +1,21 @@
-import { IsString, IsBoolean, IsNumber, IsOptional, IsDateString, IsNotEmpty, IsDefined } from 'class-validator';
+import { Transform } from 'class-transformer';
+import {
+  IsString, IsBoolean, IsNumber, IsOptional, IsDateString,
+  IsNotEmpty, IsDefined, IsEnum
+} from 'class-validator';
+import { PetColor } from '../../common/enums/pet-color.enum';
+import { PetSize } from 'src/common/enums/pet-size.enum';
+import { PetType } from 'src/common/enums/pet-type.enum';
+import { PetGender } from 'src/common/enums/pet-gender.enum';
 
 export class CreatePetDto {
   @IsString()
   @IsNotEmpty()
   image: string;
+
+  @IsEnum(PetType)
+  @IsNotEmpty()
+  peType: PetType;
 
   @IsString()
   @IsNotEmpty()
@@ -13,35 +25,45 @@ export class CreatePetDto {
   @IsNotEmpty()
   sku: string;
 
-  @IsString()
+  @IsEnum(PetGender)
   @IsNotEmpty()
-  gender: string;
+  gender: PetGender;
 
   @IsNumber()
+  @Transform(({ value }) => parseFloat(value))
   @IsNotEmpty()
   age: number;
 
-  @IsString()
+  @IsEnum(PetSize)
   @IsNotEmpty()
-  size: string;
+  size: PetSize;
 
-  @IsString()
+  @IsNumber()
+  @Transform(({ value }) => parseFloat(value))
   @IsNotEmpty()
-  color: string;
+  price: number;
+
+  @IsEnum(PetColor)
+  @IsNotEmpty()
+  color: PetColor;
 
   @IsBoolean()
+  @Transform(({ value }) => value === 'true')
   @IsDefined()
   vaccinated: boolean;
 
   @IsBoolean()
+  @Transform(({ value }) => value === 'true')
   @IsDefined()
   dewormed: boolean;
 
-  @IsDefined()
   @IsBoolean()
+  @Transform(({ value }) => value === 'true')
+  @IsDefined()
   cert: boolean;
 
   @IsBoolean()
+  @Transform(({ value }) => value === 'true')
   @IsDefined()
   microchip: boolean;
 
@@ -55,5 +77,5 @@ export class CreatePetDto {
 
   @IsOptional()
   @IsString()
-  additionalInformation: string | null;
+  additionalInformation?: string;
 }
