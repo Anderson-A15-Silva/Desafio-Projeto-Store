@@ -12,75 +12,59 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+#homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--neutral);
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
-
-#homePage header {
-    background-color: var(--primary);
-    height: 70px;
-    color: var(--secundary);
-    display: flex;
-    align-items: center;
-    z-index: 3;
+main {
     width: 100%;
+    margin-bottom: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#homePage header #square-3 {
-    position: absolute;
-    width: 360px;
-    z-index: 1;
-    background-color: var(--quaternary);
-    height: 380px;
-    border-radius: 80px;
-    top: -320px;
-    transform: rotate(120deg);
-    left: -150px;
-}
-
-#homePage #welcome-area {
+#welcome-area {
     background-color: var(--primary);
     width: 100%;
     height: 565px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     flex-direction: column;
     color: var(--secundary);
     position: relative;
     overflow: hidden;
 }
 
-#homePage #welcome-area > div {
+#welcome-area > div {
     display: flex;
     flex-direction: column;
     width: 520px;
     margin: 100px;
 } 
 
-#homePage #welcome-area > div > p:nth-of-type(1) {
+#welcome-area > div > p:nth-of-type(1) {
     font-weight: bold;
     font-size: 3.2em;
 }
 
-#homePage #welcome-area h1 {
+#welcome-area h1 {
     font-size: 4em;
 }
 
-#homePage #welcome-area div > div {
+#welcome-area div > div {
     display: flex;
     justify-content: flex-start;
 }
 
-#homePage #welcome-area button {
-    margin: 20px 10px;
-    padding: 15px;
-    border: 2px solid var(--terciary);
-    border-radius: 30px;
-    background-color: var(--neutral);
-}
-
-#homePage #welcome-area #img-background-1 {
+#welcome-area #img-background-1 {
     position: absolute;
     right: 140px;
     height: 450px;
@@ -88,7 +72,7 @@ body {
     z-index: 1;
 }
 
-#homePage #welcome-area #square-1 {
+#welcome-area #square-1 {
     position: absolute;
     right: 240px;
     width: 380px;
@@ -99,7 +83,7 @@ body {
     transform: rotate(12deg);
 }
 
-#homePage #welcome-area #square-2 {
+#welcome-area #square-2 {
     position: absolute;
     right: 140px;
     width: 440px;
@@ -110,161 +94,19 @@ body {
     transform: rotate(30deg);
 }
 
-#homePage .cards-section {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 50px 0px;
-    justify-content: space-around;
-}
-
-#homePage .cards-section > div {
-    display: flex;
-    flex-direction: column;
-}
-
-#homePage .cards-section .cards-area {
-    display: flex;
-    width: 800px;
-    flex-wrap: wrap;
-    margin: 50px 120px;
-    gap: 15px;
-}
-
-#homePage .cards-header p {
-    color: var(--secundary);
-    margin-left: 100px;
-    font-size: 0.8em;
-}
-
-#homePage .cards-header p:last-child {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-#homePage .cards-section > div > div {
-    display: flex;
-    justify-content: space-between;
-}
-
-#homePage .cards-section button {
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid var(--terciary);
-    color: var(--terciary);
-    background-color: var(--neutral);
-    margin-right: 100px;
-}
-
-#homePage .cards-section #first-banner {
-    display: flex;
-    position: relative;
-    flex-direction: row-reverse;
-    background-color: var(--terciary);
-    width: 100%;
-    height: 350px;
-    border-radius: 20px;
-    margin: 100px 0px;
-    overflow: hidden;
-    color: var(--secundary)
-}
-
-#homePage .cards-section #img-background-2 {
-    position: absolute;
-    left: 60px;
-    height: 300px;
-    bottom: 0;
-    z-index: 4;
-}
-
-#homePage #first-banner > div:nth-of-type(1) {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    margin: 70px;
-    z-index: 4;
-}
-
-#homePage #first-banner div h2 {
-    margin-left: 100px;
-    font-size: 2em;
-}
-
-#homePage #first-banner div p:nth-of-type(1) {
-    font-size: 1.4em;
-    font-weight: bold;
-}
-
-#homePage .cards-section button {
-    margin: 20px 10px;
-    padding: 15px;
+#welcome-area > div > div > button:first-child{
     border: 2px solid var(--terciary);
-    border-radius: 30px;
     background-color: var(--neutral);
+    color: var(--terciary);
 }
 
-#homePage * .blue-button {
-    background-color: var(--secundary);
+#welcome-area .blue-button {
+    background-color: var(--terciary);
+    color: var(--neutral);
+    border: none;
 }
 
-#homePage #information-section > div > div:nth-of-type(1) > div:first-child {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 50px;
-}
-
-#homePage #information-section > div > div:nth-of-type(1) > div:first-child button {
-    padding: 10px;
-    color: var(--secundary);
-    background-color: var(--neutral);
-    border-radius: 20px;
-    border: 1px solid var(--secundary);
-}
-
-#homePage #information-section > div > div:nth-of-type(1) > div:last-child {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#homePage #information-section > div > div:nth-of-type(1) > div img {
-    width: 100px;
-}
-
-#homePage #second-banner {
-    overflow: hidden;
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    height: 320px;
-    border-radius: 20px;
-    margin: 100px 100px;
-    background-color: #FFB775;
-    align-items: center;
-    justify-content: space-around;
-    border: 1px solid var(--quaternary);
-    color: var(--secundary);
-}
-
-#homePage #second-banner > div:first-child {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 70px;
-    z-index: 4;
-}
-
-#homePage #second-banner img {
-    transform: scaleX(-1) rotate(-60deg);
-    height: 280px;
-    z-index: 4;
-}
-
-#homePage #square-4 {
+#banner-1 #entire-banner #square-4 {
     background-color: var(--secundary);
     position: absolute;
     height: 750px;
@@ -273,78 +115,72 @@ body {
     transform: rotate(30deg);
     border-radius: 120px;
     bottom: -550px;
+    z-index: 0;
 }
 
-#homePage #square-5 {
+#banner-1 #entire-banner #square-5 {
     position: absolute;
     background-color: var(--primary);
-    height: 550px;
-    width: 550px;
+    height: 650px;
+    width: 650px;
     right: -100px;
     transform: rotate(30deg);
     border-radius: 80px;
     top: -180px;
+    z-index: 0;
 }
 
-#homePage #square-6 {
-    background-color: var(--primary);
-    position: absolute;
-    height: 650px;
-    width: 650px;
-    left: -100px;
-    transform: rotate(50deg);
-    border-radius: 80px;
-    top: -200px;
+#information-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#homePage #square-7 {
-    background-color: var(--quaternary);
-    position: absolute;
-    height: 650px;
-    width: 650px;
-    right: -140px;
-    border-radius: 80px;
-    transform: rotate(60deg);
-    bottom: -450px;
-}
-
-#homePage #second-banner h2 {
-    font-size: 2.5em;
-}
-
-#homePage #second-banner p:nth-of-type(1) {
-    font-size: 1.8em;
-    font-weight: bold;
-}
-
-#homePage .blue-word {
-    color: var(--secundary);
-    font-weight: bold;
-}
-
-#homePage #information-section #informative-cards-section {
+#information-section > div:nth-of-type(1) > div:first-child {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 0px 140px;
+    margin: 20px 50px;
 }
 
-#homePage #information-section #informative-cards-section div {
-    width: 320px;
-    height: 360px;
-    margin-bottom: 400px;
-}
-
-#homePage #information-section #informative-cards-section img {
-    width: 100%;
-    height: 200px;
+#information-section > div:nth-of-type(1) > div:first-child button {
+    padding: 10px;
+    color: var(--secundary);
+    background-color: var(--neutral);
     border-radius: 20px;
+    border: 1px solid var(--secundary);
 }
 
-#homePage #information-section #informative-cards-section p {
-    font-size: 0.7em;
+#information-section > div:nth-of-type(1) > div:last-child {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-#homePage a {
-    text-decoration: none;
+#information-section > div:nth-of-type(1) > div img {
+    width: 100px;
+}
+
+#partners-information {
+    width: 100%;
+}
+
+#partners-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#partners-header > span {
+    display: inline;
+    
+}
+
+#partners-header .blue-word{
+    color: var(--terciary);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#partners-header button {
+    width: 300px;
 }

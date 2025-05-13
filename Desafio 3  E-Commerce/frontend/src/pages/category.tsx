@@ -40,7 +40,7 @@ const Category = () => {
 
     return (
         <div id="categoryPage">
-            <AppBar/>
+            <AppBar backgroundColor="var(--neutral)" squareDisplay={false}/>
             <div id="third-banner">
 
             </div>
@@ -52,6 +52,7 @@ const Category = () => {
                     ) : (
                         pets.map(pet => (
                             <Card
+                                type="pet"
                                 key={pet.id}
                                 name={pet.name}
                                 genre={pet.gender}

@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import "./AppBar.css";
 
-const AppBar = () => {
+interface AppBarProps {
+    backgroundColor: string;
+    squareDisplay: boolean;
+}
+
+const AppBar: React.FC<AppBarProps> = ({ backgroundColor, squareDisplay }) => {
     return (
-        <header id="AppBar">
-            <div>
+        <header id="AppBar" style={{ backgroundColor: backgroundColor, display: squareDisplay ? "flex" : "none" }}>
+            <div id="logo-header">
                 <p>Monito</p>
                 <p>Pets for Best</p>
             </div>
@@ -18,6 +23,7 @@ const AppBar = () => {
             </nav>
             <input type="text" placeholder="Search something here!" />
             <button>Join the community</button>
+            <button> <img src="" alt=""/> VND</button>
             <div id="square-3"></div>
         </header>
     );
