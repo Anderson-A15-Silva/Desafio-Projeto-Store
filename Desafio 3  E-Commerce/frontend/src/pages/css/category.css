@@ -31,12 +31,12 @@
 #entire-banner #square-4 {
     position: absolute;
     background-color: var(--terciary);
-    height: 950px;
-    width: 950px;
-    right: -280px;
-    transform: rotate(65deg);
+    height: 850px;
+    width: 550px;
+    right: 100px;
+    transform: rotate(75deg);
     border-radius: 140px;
-    top: -100px;
+    top: -200px;
     z-index: 0;
 }
 
@@ -53,6 +53,10 @@
     font-size: 1.9em;
 }
 
+#categoryPage #entire-banner #banner-content > div .button:last-child {
+    background-color: var(--neutral);
+}
+
 #filter-menu {
     float: left;
     width: 250px;
@@ -61,8 +65,7 @@
 
 #category-content {
     display: flex;
-    width: 100%;
-    margin-left: 150px;
+    width: 90%;
 }
 
 #category-content > section {

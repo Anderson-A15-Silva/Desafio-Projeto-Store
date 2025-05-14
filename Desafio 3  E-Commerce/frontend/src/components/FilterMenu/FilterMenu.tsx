@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './FilterMenu.css';
 
 interface FiltersPets {
@@ -92,6 +91,8 @@ const FilterMenu = ({ setPetsFilters, petsFilters, productsFilters, setProductsF
                         </label>
                     ))}
 
+                    <hr />
+
                     <p>Color</p>
                     {['Red', 'Apricot', 'Black', 'BlackAndWhite', 'Silver', 'Tan'].map((color) => (
                         <label key={color}>
@@ -106,21 +107,28 @@ const FilterMenu = ({ setPetsFilters, petsFilters, productsFilters, setProductsF
                         </label>
                     ))}
 
+                    <hr />
+
                     <p>Price</p>
-                    <input
-                        type="number"
-                        name="minPrice"
-                        value={petsFilters.minPrice}
-                        placeholder="Min"
-                        onChange={handleFilterChange}
-                    />
-                    <input
-                        type="number"
-                        name="maxPrice"
-                        value={petsFilters.maxPrice}
-                        placeholder="Max"
-                        onChange={handleFilterChange}
-                    />
+                    <div>
+                        <input
+                            type="number"
+                            name="minPrice"
+                            value={petsFilters.minPrice}
+                            placeholder="Min"
+                            onChange={handleFilterChange}
+                        />
+                        <input
+                            type="number"
+                            name="maxPrice"
+                            value={petsFilters.maxPrice}
+                            placeholder="Max"
+                            onChange={handleFilterChange}
+                        />
+                    </div>
+
+
+                    <hr />
 
                     <p>Size</p>
                     {['Small', 'Medium', 'Large'].map((size) => (
@@ -135,17 +143,19 @@ const FilterMenu = ({ setPetsFilters, petsFilters, productsFilters, setProductsF
                             {size}
                         </label>
                     ))}
+
+                    <hr />
                 </>
             )}
 
             {path === 'products' && productsFilters && (
                 <>
                     <p>Type</p>
-                    {['Food', 'Costume', 'Toy'].map((type) => (
+                    {['Dog Food', 'Cat Food', 'Costume', 'Toy'].map((type) => (
                         <label key={type}>
                             <input
                                 type="checkbox"
-                                name="type"
+                                name="prType"
                                 value={type}
                                 checked={isProductChecked('prType', type)}
                                 onChange={handleFilterChange}
@@ -154,37 +164,48 @@ const FilterMenu = ({ setPetsFilters, petsFilters, productsFilters, setProductsF
                         </label>
                     ))}
 
+                    <hr />
+
                     <p>Price</p>
-                    <input
-                        type="number"
-                        name="minPrice"
-                        value={productsFilters.minPrice}
-                        placeholder="Min"
-                        onChange={handleFilterChange}
-                    />
-                    <input
-                        type="number"
-                        name="maxPrice"
-                        value={productsFilters.maxPrice}
-                        placeholder="Max"
-                        onChange={handleFilterChange}
-                    />
+                    <div>
+                        <input
+                            type="number"
+                            name="minPrice"
+                            value={productsFilters.minPrice}
+                            placeholder="Min"
+                            onChange={handleFilterChange}
+                        />
+                        <input
+                            type="number"
+                            name="maxPrice"
+                            value={productsFilters.maxPrice}
+                            placeholder="Max"
+                            onChange={handleFilterChange}
+                        />
+                    </div>
+
+                    <hr />
 
                     <p>Size</p>
-                    <input
-                        type="number"
-                        name="minSize"
-                        value={productsFilters.minSize}
-                        placeholder="Min"
-                        onChange={handleFilterChange}
-                    />
-                    <input
-                        type="number"
-                        name="maxSize"
-                        value={productsFilters.maxSize}
-                        placeholder="Max"
-                        onChange={handleFilterChange}
-                    />
+                    <div>
+                        <input
+                            type="number"
+                            name="minSize"
+                            value={productsFilters.minSize}
+                            placeholder="Min"
+                            onChange={handleFilterChange}
+                        />
+                        <input
+                            type="number"
+                            name="maxSize"
+                            value={productsFilters.maxSize}
+                            placeholder="Max"
+                            onChange={handleFilterChange}
+                        />
+                    </div>
+
+
+                    <hr />
                 </>
             )}
         </aside>

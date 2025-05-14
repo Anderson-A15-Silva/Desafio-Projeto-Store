@@ -6,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule); // 👈 Adicionado o tipo
+  const app = await NestFactory.create<NestExpressApplication>(AppModule); 
   const configService = app.get(ConfigService);
 
   app.enableCors();
@@ -17,9 +17,8 @@ async function bootstrap() {
     transform: true, 
   }));
 
-  // Torna a pasta 'uploads' acessível publicamente
   app.useStaticAssets(join(__dirname, '..', 'uploads'), {
-    prefix: '/uploads/', // Exemplo: http://localhost:3025/uploads/image.jpg
+    prefix: '/uploads/',
   });
 
   await app.listen(3025);

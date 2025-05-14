@@ -10,7 +10,7 @@ export class ProductsController {
 
   @Get()
   getAll(@Query() filter: FilterProductDto): Promise<Product[]> {
-    return this.service.findAllPets(filter);
+    return this.service.findAllProducts(filter);
   }
 
   @Post()

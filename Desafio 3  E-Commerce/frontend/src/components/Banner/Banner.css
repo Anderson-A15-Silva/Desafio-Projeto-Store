@@ -42,13 +42,13 @@
     padding: 40px;
 }
 
-#entire-banner #banner-content h2, h3, p {
+#entire-banner #banner-content h2, #entire-banner #banner-content h3, #entire-banner #banner-content p {
     width: 100%;
     z-index: 4;
 }
 
 #banner-content h2 {
-    font-size: 4em;
+    font-size: 3em;
 }
 
 #banner-content h3 {

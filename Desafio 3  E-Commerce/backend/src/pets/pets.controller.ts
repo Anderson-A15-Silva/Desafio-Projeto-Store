@@ -5,6 +5,7 @@ import {
   Body,
   Query,
   BadRequestException,
+  Param,
 } from '@nestjs/common';
 import { Pet } from 'src/entities/pet.entity';
 import { PetsService } from './pets.service';
@@ -18,6 +19,11 @@ export class PetsController {
   @Get()
   getAll(@Query() filter: FilterPetDto): Promise<Pet[]> {
     return this.service.findAllPets(filter);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.service.findOne(+id);
   }
 
   @Post()

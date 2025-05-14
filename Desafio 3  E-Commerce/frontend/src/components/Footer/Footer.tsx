@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
 import Button from '../Button/Button';
+import facebookIcon from "../../assets/icons/facebook.png";
+import twitterIcon from "../../assets/icons/twitter.png";
+import instagramIcon from "../../assets/icons/instagram.png";
+import youtubeIcon from "../../assets/icons/youtube.png";
 
 const Footer = () => {
     return (
@@ -22,11 +26,11 @@ const Footer = () => {
                         <p>About</p>
                         <p>Contact</p>
                     </div>
-                    <div>
-                        <img src="#" alt="facebook logo icon" />
-                        <img src="#" alt="twitter logo icon" />
-                        <img src="#" alt="instagram logo icon" />
-                        <img src="#" alt="youtube logo icon" />
+                    <div id='media-icons'>
+                        <img src={facebookIcon} alt="facebook logo icon" />
+                        <img src={twitterIcon} alt="twitter logo icon" />
+                        <img src={instagramIcon} alt="instagram logo icon" />
+                        <img src={youtubeIcon} alt="youtube logo icon" />
                     </div>
                 </div>
                 <hr />

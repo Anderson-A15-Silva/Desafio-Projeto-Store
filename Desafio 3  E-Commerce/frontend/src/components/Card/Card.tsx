@@ -12,6 +12,8 @@ type CardProps = {
     price?: number;
     description?: string;
     text?: string;
+    haveLink?: boolean;
+    nextPage?: string;
 };
 
 const Card = ({ image, type, alternativeText, name, product, genre, age, size, price, description, text }: CardProps) => {
@@ -24,7 +26,7 @@ const Card = ({ image, type, alternativeText, name, product, genre, age, size, p
                     <p>Product: {product} </p>
                     <p>Size: {size} </p>
                 </div>
-                <p>{price}</p>
+                <p>{price} VDN</p>
                 <p>{text}</p>
             </div>
         )
@@ -39,7 +41,7 @@ const Card = ({ image, type, alternativeText, name, product, genre, age, size, p
                     <p>Genre: {genre}</p>
                     <p>Age: {age}</p>
                 </div>
-                <p>{price}</p>
+                <p>{price} VDN</p>
             </div>
         )
     }

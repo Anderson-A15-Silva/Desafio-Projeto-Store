@@ -12,12 +12,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#filter-menu > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 #inputPriceMin, #inputPriceMax {
     width: 20%;
     border: 0.1px solid gray;
@@ -27,4 +21,27 @@
 #filter-menu #price-div {
     flex-direction: row;
     justify-content: start;
+}
+
+#filter-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 15px
+}
+
+#filter-menu > p {
+    margin-top: 20px;
+}
+
+#filter-menu > * {
+    margin: 2px 0px;
+}
+
+#filter-menu input {
+    border: none;
+    outline: none;
+}
+
+#filter-menu > div {
+    display: flex;
 }

@@ -45,13 +45,28 @@ const Home = () => {
 
                 </section>
 
-                <CardsSection type="pet" title="Whats new?" text="Take a look at some of our pets" />
+                <CardsSection cardType="pet" title="Whats new?" text="Take a look at some of our pets" limit={8}/>
 
                 <div id="banner-1">
-                    <Banner backgroundImage={backgroundImage2} title="One More Friend" subtitle="Thousands More Fun!" text="Having a pet means you have more joy, a new friend, a happy person who will always b'e with you to have fun. We have 200+ different pets that can meet your needs!" nextPage="/category/pets" backgroundColor="var(--terciary)" textSide="end" flexDirection="row"/>
+                    <Banner
+                        backgroundImage={backgroundImage2}
+                        title="One More Friend"
+                        subtitle="Thousands More Fun!"
+                        text="Having a pet means you have more joy, a new friend, a happy person who will always b'e with you to have fun. We have 200+ different pets that can meet your needs!"
+                        nextPage1="/"
+                        nextPage2="/category/pets"
+                        backgroundColor="var(--terciary)"
+                        textSide="end" flexDirection="row"
+                        textColor="black"
+                        backgroundColorButton1="var(--primary)"
+                        backgroundColorButton2="var(--terciary)"
+                        textColorButton1="var(--terciary)"
+                        textColorButton2="var(--neutral)"
+                        borderButton1="0.1px solid var(--terciary)"
+                        borderButton2="none" />
                 </div>
 
-                <CardsSection type="product" title="Hard to choose right products for your pets?" text="Our Products" />
+                <CardsSection cardType="product" title="Hard to choose right products for your pets?" text="Our Products" limit={8}/>
 
                 <section id="information-section">
 
@@ -75,10 +90,25 @@ const Home = () => {
                     </div>
 
                     <div id="banner-2">
-                         <Banner backgroundImage={backgroundImage3} title="Adoption" subtitle="We Need Help. So Do They" text="Adopt a pet and give it a home, it will be love you back unconditionally." nextPage="/category/pets" backgroundColor="var(--quaternary)" textSide="start" flexDirection="row-reverse"/>
-                    </div>          
+                        <Banner
+                            backgroundImage={backgroundImage3}
+                            title="Adoption" subtitle="We Need Help. So Do They"
+                            text="Adopt a pet and give it a home, it will be love you back unconditionally."
+                            nextPage1="/"
+                            nextPage2="/category/pets"
+                            backgroundColor="var(--quaternary)"
+                            textSide="start"
+                            flexDirection="row-reverse"
+                            textColor="black"
+                            backgroundColorButton1="var(--primary)"
+                            backgroundColorButton2="var(--terciary)"
+                            textColorButton1="var(--terciary)"
+                            textColorButton2="var(--neutral)"
+                            borderButton1="0.1px solid var(--terciary)"
+                            borderButton2="none" />
+                    </div>
 
-                    <CardsSection title="You already know?" text="Useful pet knowledge" type="informative" />
+                    <CardsSection title="You already know?" text="Useful pet knowledge" cardType="informative" limit={3}/>
                 </section>
             </main>
             <Footer />

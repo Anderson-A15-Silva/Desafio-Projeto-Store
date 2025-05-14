@@ -1,17 +1,215 @@
 import Card from "../Card/Card";
-import cat1 from '../../assets/imgs/cat-1.png';
 import "./CardsSection.css";
-import { JSX } from "react";
+import { JSX, useEffect, useState } from "react";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface CardsSectionProps {
   title: string;
   text: string;
-  type: string;
+  cardType: string;
+  limit: number;
 }
 
-const CardsSection = ({ title, text, type }: CardsSectionProps): JSX.Element => {
-  if (type === "product") {
+interface Pet {
+  price: number;
+  id: number;
+  image: string;
+  name: string;
+  sku: string;
+  gender: string;
+  age: number;
+  size: string;
+  color: string;
+  vaccinated: boolean;
+  dewormed: boolean;
+  cert: boolean;
+  microchip: boolean;
+  location: string;
+  publishedDate: Date;
+  additionalInformation: string | null;
+}
+
+interface Product {
+  id: number;
+  image: string;
+  name: string;
+  prType: string;
+  price: number;
+  size: number;
+}
+
+const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.Element => {
+  const API_URL = 'http://localhost:3025';
+
+  const [pets, setPets] = useState<Pet[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [petsFilters, setPetsFilters] = useState({
+    limit: limit,
+    offset: 0,
+    minPrice: 0,
+    maxPrice: 1000,
+    gender: [] as string[],
+    color: [] as string[],
+    size: [] as string[]
+  });
+
+  const [productsFilters, setProductsFilters] = useState({
+    limit: limit,
+    offset: 0,
+    prType: [] as string[],
+    minPrice: 0,
+    maxPrice: 1000,
+    minSize: 0,
+    maxSize: 1000
+  });
+
+  if (cardType === 'pet') {
+    const buildQuery = () => {
+      const params = new URLSearchParams();
+
+      params.append("limit", petsFilters.limit.toString());
+      params.append("offset", petsFilters.offset.toString());
+      params.append("minPrice", petsFilters.minPrice.toString());
+      params.append("maxPrice", petsFilters.maxPrice.toString());
+
+      if (petsFilters.gender.length > 0) {
+        petsFilters.gender.forEach(g => params.append("gender", g));
+      }
+
+      if (petsFilters.color.length > 0) {
+        petsFilters.color.forEach(c => params.append("color", c));
+      }
+
+      if (petsFilters.size.length > 0) {
+        petsFilters.size.forEach(s => params.append("size", s));
+      }
+
+      return params.toString();
+    };
+
+
+
+    const fetchPets = async () => {
+      try {
+        const query = buildQuery();
+        const url = `${API_URL}/pets?${query}`;
+
+        console.log('URL da API:', url);
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          let errorMessage = `Erro ao buscar pets: ${response.statusText}`;
+
+          try {
+            const errorBody = await response.json();
+            errorMessage += ` - Detalhes: ${JSON.stringify(errorBody)}`;
+          } catch (error) {
+            console.error("Erro ao tentar capturar detalhes da resposta:", error);
+          }
+
+          throw new Error(errorMessage);
+        }
+
+
+        const data = await response.json();
+        console.log('Dados recebidos:', data);
+
+        if (data && Array.isArray(data)) {
+          setPets(data);
+        } else {
+          console.error('Dados inválidos recebidos:', data);
+          setPets([]);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar pets:', error);
+        setPets([]);
+      }
+    };
+
+    useEffect(() => {
+      fetchPets();
+    }, [petsFilters]);
+  }
+
+  if (cardType === 'product') {
+    const buildQuery = () => {
+      const params = new URLSearchParams();
+
+      params.append("limit", productsFilters.limit.toString());
+      params.append("offset", productsFilters.offset.toString());
+      params.append("minPrice", productsFilters.minPrice.toString());
+      params.append("maxPrice", productsFilters.maxPrice.toString());
+      params.append("minSize", productsFilters.minPrice.toString());
+      params.append("maxSize", productsFilters.maxPrice.toString());
+
+      if (productsFilters.prType.length > 0) {
+        productsFilters.prType.forEach(t => params.append("prType", t));
+      }
+
+      return params.toString();
+    };
+
+    const fetchProducts = async () => {
+      try {
+        const query = buildQuery();
+        const url = `${API_URL}/products?${query}`;
+
+        console.log('URL da API:', url);
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          let errorMessage = `Error while fetching products: ${response.statusText}`;
+
+          try {
+            const errorBody = await response.json();
+            errorMessage += ` - Details: ${JSON.stringify(errorBody)}`;
+          } catch (error) {
+            console.error("Error trying to capture response details:", error);
+          }
+
+          throw new Error(errorMessage);
+        }
+
+
+        const data = await response.json();
+        console.log('Datas received:', data);
+
+        if (data && Array.isArray(data)) {
+          setProducts(data);
+        } else {
+          console.error('Invalid datas received:', data);
+          setProducts([]);
+        }
+      } catch (error) {
+        console.error('Error while fetching products:', error);
+        setProducts([]);
+      }
+    };
+
+    useEffect(() => {
+      fetchProducts();
+    }, [productsFilters]);
+  }
+
+  const [showNoPetsMessage, setShowNoPetsMessage] = useState(false);
+
+  useEffect(() => {
+    if (pets.length === 0) {
+      const timer = setTimeout(() => {
+        setShowNoPetsMessage(true);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowNoPetsMessage(false);
+    }
+  }, [pets]);
+
+  if (cardType === "product") {
     return (
       <section id="cards-section">
         <div id="card-header">
@@ -22,20 +220,36 @@ const CardsSection = ({ title, text, type }: CardsSectionProps): JSX.Element => 
           <Button text="View More" backgroundColor="var(--neutral)" color="var(--terciary)" haveLink={true} nextPage="/category/products" border="0.1px solid var(--terciary)" />
         </div>
         <div id="card-content">
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
-          <Card type='product' name='a' product='a' image={cat1} alternativeText='#' size='a' price={13} text='a' />
+          {
+            products.length === 0 ? (
+              showNoPetsMessage ? (
+                <p>Nenhum produto foi encontrado.</p>
+              ) : (
+                <p>Carregando pets...</p>
+              )
+            ) : (
+              products.map(product => (
+                <Link to={`/details/pets/${product.id}`}>
+                  <Card
+                    type="product"
+                    key={product.id}
+                    name={product.name}
+                    product={product.prType}
+                    size={product.size}
+                    price={product.price}
+                    image={`${API_URL}/${product.image}`}
+                    alternativeText={`Imagem de ${product.name}`}
+                  />
+                </Link>
+              ))
+            )
+          }
         </div>
       </section>
     );
   }
 
-  if (type === 'pet') {
+  if (cardType === 'pet') {
     return (
       <section id="cards-section">
         <div id="card-header">
@@ -46,20 +260,36 @@ const CardsSection = ({ title, text, type }: CardsSectionProps): JSX.Element => 
           <Button text="View More" backgroundColor="var(--neutral)" color="var(--terciary)" haveLink={true} nextPage="/category/pets" border="0.1px solid var(--terciary)" />
         </div>
         <div id="card-content">
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
-          <Card type='pet' name='a' genre='a' image={cat1} alternativeText='#' age={1} price={13} />
+          {
+            pets.length === 0 ? (
+              showNoPetsMessage ? (
+                <p>Nenhum pet foi encontrado.</p>
+              ) : (
+                <p>Carregando pets...</p>
+              )
+            ) : (
+              pets.map(pet => (
+                <Link to={`/details/pets/${pet.id}`}>
+                  <Card
+                    type="pet"
+                    key={pet.id}
+                    name={pet.name}
+                    genre={pet.gender}
+                    image={`${API_URL}/${pet.image}`}
+                    price={pet.price}
+                    alternativeText={`Imagem de ${pet.name}`}
+                    age={pet.age}
+                  />
+                </Link>
+              ))
+            )
+          }
         </div>
       </section>
     );
   }
 
-  if (type === 'informative') {
+  if (cardType === 'informative') {
     return (
       <section id="cards-section">
         <div id="card-header">
@@ -70,9 +300,9 @@ const CardsSection = ({ title, text, type }: CardsSectionProps): JSX.Element => 
           <Button backgroundColor="var(--neutral)" color="(--terciary)" border="1px solid var(--terciary)" text="View more" haveLink={true} nextPage="/category/pets" />
         </div>
         <div id="card-content">
-          <Card type='informative' name='a' image={cat1} alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
-          <Card type='informative' name='a' image={cat1} alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
-          <Card type='informative' name='a' image={cat1} alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
+          <Card type='informative' name='a' image='#' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
+          <Card type='informative' name='a' image='#' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
+          <Card type='informative' name='a' image='#' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
         </div>
       </section>
     );

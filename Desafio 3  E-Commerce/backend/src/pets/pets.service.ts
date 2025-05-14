@@ -21,6 +21,14 @@ export class PetsService {
     }
   }
 
+  async findOne(id: number): Promise<Pet> {
+    const pet = await this.repo.findOne({ where: { id } });
+    if (!pet) {
+      throw new Error(`Pet com id ${id} não encontrado`);
+    }
+    return pet;
+  }
+
   async findAllPets(filter?: FilterPetDto) {
     try {
       const {
@@ -75,7 +83,7 @@ export class PetsService {
 
       const pets = await query.getMany();
 
-      console.log('Pets found::', pets);
+      console.log('Pets found:', pets);
       return pets;
     } catch (error) {
       console.error('Error while searching for pet', error); 
