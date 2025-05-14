@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Param } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { Product } from '../entities/product.entity';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -11,6 +11,11 @@ export class ProductsController {
   @Get()
   getAll(@Query() filter: FilterProductDto): Promise<Product[]> {
     return this.service.findAllProducts(filter);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.service.findOne(+id);
   }
 
   @Post()

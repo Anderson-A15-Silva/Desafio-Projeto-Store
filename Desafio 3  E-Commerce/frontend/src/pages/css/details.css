@@ -61,7 +61,7 @@
     margin-top: 100px;
 }
 
-#chat-buttons {
+.chat-buttons {
     display: flex;
     align-items: center;
 }
@@ -113,11 +113,10 @@
 .modal-content form {
     display: flex;
     flex-direction: column;
-    padding: 10px;
 }
 
 .modal-content label {
-    margin: 10px 5px;
+    margin: 2px 5px;
 }
 
 .modal-content input {

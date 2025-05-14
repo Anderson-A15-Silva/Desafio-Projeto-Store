@@ -10,6 +10,7 @@ interface ButtonProps {
     nextPage?: string;
     onClick?: () => void;
     disabled?: boolean;
+    type?: "submit" | "reset" | undefined;
 }
 
 const Button = ({
@@ -20,7 +21,8 @@ const Button = ({
     haveLink,
     nextPage,
     onClick,
-    disabled
+    disabled,
+    type
 }: ButtonProps) => {
     const style = {
         backgroundColor,
@@ -46,6 +48,7 @@ const Button = ({
             onClick={onClick}
             className="button"
             style={style}
+            type={type}
         >
             {text}
         </button>

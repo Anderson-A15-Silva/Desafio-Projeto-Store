@@ -22,6 +22,14 @@ export class ProductsService {
 
   }
 
+  async findOne(id: number): Promise<Product> {
+      const product = await this.repo.findOne({ where: { id } });
+      if (!product) {
+        throw new Error(`Product com id ${id} não encontrado`);
+      }
+      return product;
+    }
+
   async findAllProducts(filter?: FilterProductDto) {
     try {
       const {

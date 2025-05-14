@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ItemCarousel.css';
 
 interface ItemCarouselProps {
@@ -13,9 +13,16 @@ const ItemCarousel = ({ images, width, height, type }: ItemCarouselProps) => {
 
   const [mainImage, setMainImage] = useState(images[0]); 
 
+  useEffect(() => {
+  if (images && images.length > 0) {
+    setMainImage(images[0]);
+  }
+}, [images]);
+
   const changeMainImage = (src: string) => {
     setMainImage(src);
   };
+
 
   if (type === 'section') {
     return (

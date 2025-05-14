@@ -118,7 +118,7 @@ main {
     left: -180px;
     transform: rotate(30deg);
     border-radius: 120px;
-    bottom: -750px;
+    top: 200px;
     z-index: 0;
 }
 

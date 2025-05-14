@@ -3,7 +3,6 @@ import "./CardsSection.css";
 import { JSX, useEffect, useState } from "react";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 interface CardsSectionProps {
   title: string;
@@ -96,18 +95,18 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
         const query = buildQuery();
         const url = `${API_URL}/pets?${query}`;
 
-        console.log('URL da API:', url);
+        console.log('API URL:', url);
 
         const response = await fetch(url);
 
         if (!response.ok) {
-          let errorMessage = `Erro ao buscar pets: ${response.statusText}`;
+          let errorMessage = `Error fetching pets: ${response.statusText}`;
 
           try {
             const errorBody = await response.json();
-            errorMessage += ` - Detalhes: ${JSON.stringify(errorBody)}`;
+            errorMessage += ` - Details: ${JSON.stringify(errorBody)}`;
           } catch (error) {
-            console.error("Erro ao tentar capturar detalhes da resposta:", error);
+            console.error("Error trying to capture response details: ", error);
           }
 
           throw new Error(errorMessage);
@@ -115,16 +114,16 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
 
 
         const data = await response.json();
-        console.log('Dados recebidos:', data);
+        console.log('Datas received:', data);
 
         if (data && Array.isArray(data)) {
           setPets(data);
         } else {
-          console.error('Dados inválidos recebidos:', data);
+          console.error('Invalid Data Received: ', data);
           setPets([]);
         }
       } catch (error) {
-        console.error('Erro ao buscar pets:', error);
+        console.error('Error fetching pets: ', error);
         setPets([]);
       }
     };
@@ -157,7 +156,7 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
         const query = buildQuery();
         const url = `${API_URL}/products?${query}`;
 
-        console.log('URL da API:', url);
+        console.log('API URL: ', url);
 
         const response = await fetch(url);
 
@@ -168,7 +167,7 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
             const errorBody = await response.json();
             errorMessage += ` - Details: ${JSON.stringify(errorBody)}`;
           } catch (error) {
-            console.error("Error trying to capture response details:", error);
+            console.error("Error trying to capture response details: ", error);
           }
 
           throw new Error(errorMessage);
@@ -181,11 +180,11 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
         if (data && Array.isArray(data)) {
           setProducts(data);
         } else {
-          console.error('Invalid datas received:', data);
+          console.error('Invalid datas received: ', data);
           setProducts([]);
         }
       } catch (error) {
-        console.error('Error while fetching products:', error);
+        console.error('Error while fetching products: ', error);
         setProducts([]);
       }
     };
@@ -229,7 +228,7 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
               )
             ) : (
               products.map(product => (
-                <Link to={`/details/pets/${product.id}`}>
+                <Link to={`/details/${cardType}s/${product.id}`}>
                   <Card
                     type="product"
                     key={product.id}
@@ -269,7 +268,7 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
               )
             ) : (
               pets.map(pet => (
-                <Link to={`/details/pets/${pet.id}`}>
+                <Link to={`/details/${cardType}s/${pet.id}`}>
                   <Card
                     type="pet"
                     key={pet.id}
@@ -300,9 +299,9 @@ const CardsSection = ({ title, text, cardType, limit }: CardsSectionProps): JSX.
           <Button backgroundColor="var(--neutral)" color="(--terciary)" border="1px solid var(--terciary)" text="View more" haveLink={true} nextPage="/category/pets" />
         </div>
         <div id="card-content">
-          <Card type='informative' name='a' image='#' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
-          <Card type='informative' name='a' image='#' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
-          <Card type='informative' name='a' image='#' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
+          <Card type='informative' name='Pet knowledge' image='http://localhost:3025/uploads/posts/post-1.png' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
+          <Card type='informative' name='Pet knowledge' image='http://localhost:3025/uploads/posts/post-2.jpg' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
+          <Card type='informative' name='Pet knowledge' image='http://localhost:3025/uploads//posts/post-3.png' alternativeText='#' description='The Pomeranian, also known as the Pomeranian (Pom dog), is always in the top of the cutest pets. Not only that, the small, lovely, smart, friendly, and skillful circus dog breed.' />
         </div>
       </section>
     );
